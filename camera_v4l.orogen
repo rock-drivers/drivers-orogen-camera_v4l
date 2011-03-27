@@ -1,0 +1,21 @@
+name 'camera_v4l'
+
+using_library "opencv"
+import_types_from "base"
+
+
+task_context 'Task' do
+    needs_configuration
+    output_port 'frame', ro_ptr('base::samples::frame::Frame')
+    
+end
+
+deployment "camera_v4l" do
+    camera_taska = task("v4l_cam", 'Task').
+	periodic(0.05)
+    add_default_logger
+    if !corba_enabled?
+       browse camera_taska
+    end
+end
+
