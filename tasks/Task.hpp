@@ -3,6 +3,7 @@
 #ifndef CAMERA_V4L_TASK_TASK_HPP
 #define CAMERA_V4L_TASK_TASK_HPP
 
+#include <stddef.h>
 #include <cv.h>
 #include <highgui.h>
 #include "camera_v4l/TaskBase.hpp"
