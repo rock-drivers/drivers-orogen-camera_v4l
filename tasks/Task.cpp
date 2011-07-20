@@ -23,7 +23,7 @@ bool Task::configureHook()
 {
     if (! TaskBase::configureHook())
         return false;
-    capture = cvCreateCameraCapture(0);
+    capture = cvCreateCameraCapture(_camera_id.get());
     if(!capture){
 	fprintf(stderr,"Cannot open captureing device\n");
 	return false;    
