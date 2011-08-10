@@ -1,0 +1,12 @@
+<package>
+  <description brief="Simple OpenCV camerav4l interface for image data Aquisition">
+  	This Packag provides images that can be qcquired from each v4l (e.g. most Webcams) device into ROCK
+  </description>
+  <author>Matthias Goldhoorn/matthias.goldhoorn@dfki.de</author>
+  <copyright>
+      DFKI/robotik@dfki.de
+  </copyright>
+  <license>LGPL v2 or later</license>
+  <depend package="opencv" />
+</package>
+
