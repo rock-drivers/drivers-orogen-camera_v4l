@@ -4,9 +4,7 @@
 #define CAMERA_V4L_TASK_TASK_HPP
 
 #include <string>
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
-#include <opencv2/highgui/highgui_c.h>
+#include <opencv2/videoio/videoio.hpp>
 #include <frame_helper/FrameHelper.h>
 #include "camera_v4l/TaskBase.hpp"
 
