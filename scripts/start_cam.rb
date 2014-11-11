@@ -5,7 +5,7 @@ Orocos.initialize
 
 Orocos.run 'camera_v4l' do |*_|
 	camera = Orocos::TaskContext.get 'v4l_cam'
-	camera.camera_id = 0 
+	camera.camera_id = 1
 	camera.configure
 	camera.start
 	frame = Vizkit.display camera.frame 

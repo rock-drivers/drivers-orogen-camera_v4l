@@ -23,16 +23,9 @@ bool Task::configureHook()
 {
     if (! TaskBase::configureHook())
         return false;
-    capture = cvCreateCameraCapture(_camera_id.get());
-    if(!capture){
-	fprintf(stderr,"Cannot open captureing device\n");
-	return false;    
-    }
-    frame = cvQueryFrame(capture);
-    base::samples::frame::Frame *base_frame = new base::samples::frame::Frame;
     
-    base_frame->init(frame->width,frame->height,8,base::samples::frame::MODE_RGB);    
-    camera_frame.reset(base_frame);
+	gCamera.open(_camera_id.get());			// Openning camera device
+
     return true;
 }
 // bool Task::startHook()
@@ -44,11 +37,12 @@ bool Task::configureHook()
 void Task::updateHook()
 {
     TaskBase::updateHook();
-    frame = cvQueryFrame(capture);
-    base::samples::frame::Frame *frame_ptr = camera_frame.write_access();
-    frame_ptr->setImage((char*)frame->imageData, sizeof(char) * frame->width * frame->height * 3);
-    camera_frame.reset(frame_ptr);
-    _frame.write(camera_frame);
+
+    base::samples::frame::Frame rockFrame;								// Rock's frame format
+	cv::Mat openCVFrame;												// OpenCV's frame format
+	gCamera >> openCVFrame;												// Getting the frame in the OpenCV's format
+	frame_helper::FrameHelper::copyMatToFrame(openCVFrame, rockFrame); 	// Converting OpenCV's frame format into rock's frame format
+	_frame.write(rockFrame);
 }
 // void Task::errorHook()
 // {

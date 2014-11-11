@@ -3,9 +3,11 @@
 #ifndef CAMERA_V4L_TASK_TASK_HPP
 #define CAMERA_V4L_TASK_TASK_HPP
 
-#include <stddef.h>
-#include <cv.h>
-#include <highgui.h>
+#include <string>
+#include <opencv/cv.h>
+#include <opencv/highgui.h>
+#include <opencv2/highgui/highgui_c.h>
+#include <frame_helper/FrameHelper.h>
 #include "camera_v4l/TaskBase.hpp"
 
 
@@ -14,10 +16,8 @@ namespace camera_v4l {
     {
 	friend class TaskBase;
     protected:
-	RTT::extras::ReadOnlyPointer<base::samples::frame::Frame> camera_frame;
-//       	base::samples::frame::Frame camera_frame;
-      	CvCapture* capture;
-      	IplImage* frame;
+
+	cv::VideoCapture	 gCamera;
 
 
     public:

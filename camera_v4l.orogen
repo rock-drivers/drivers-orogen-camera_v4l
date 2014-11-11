@@ -1,12 +1,13 @@
 name 'camera_v4l'
 
 using_library "opencv"
+using_library 'frame_helper'
 import_types_from "base"
 
 
 task_context 'Task' do
     needs_configuration
-    output_port 'frame', ro_ptr('base::samples::frame::Frame')
+    output_port 'frame', 'base::samples::frame::Frame'
     property('camera_id','int',0)
 end
 
